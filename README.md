@@ -1,6 +1,6 @@
 # KNN-algorithm-based-on-watermelon-dataset
 Implementation of KNN algorithm based on watermelon data set
-## Author: 非鱼子焉
+## Author: Rui Zhu
 ### Creation_time: 2020.11.11
 ### Content: KNN algorithm implementation based on watermelon dataset
 ### Blog: https://zhu-rui.blog.csdn.net/
