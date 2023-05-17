@@ -2,21 +2,21 @@
 Implementation of KNN algorithm based on watermelon data set
 ## Author: 非鱼子焉
 ### Creation_time: 2020.11.11
-### Content: 基于西瓜数据集的KNN算法实现
+### Content: KNN algorithm implementation based on watermelon dataset
 ### Blog: https://zhu-rui.blog.csdn.net/
 
 
-### K近邻法
-- k近邻法（k-nearest neighbor，k-NN）是一种基本分类与回归方法。本书只讨论分类问题中的k近邻法。k近邻法的输入为实例的特征向量，对应于特征空间的点；输出为实例的类别，可以取多类。k近邻法假设给定一个训练数据集，其中的实例类别已定。分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻法不具有显式的学习过程。k近邻法实际上利用训练数据集对特征向量空间进行划分，并作为其分类的“模型”。
+### K-nearest neighbor method
+- The k-nearest neighbour (k-NN) method is a basic classification and regression method. This book only discusses the k-nearest neighbor method for classification problems. k-nearest neighbor method has as input the feature vector of instances, corresponding to the points in the feature space, and as output the class of instances, which can be taken as multiple classes. k-nearest neighbor method assumes a training data set, in which the classes of instances are already determined. For classification, new instances are predicted based on the categories of their k nearest neighbour training instances, e.g. by majority voting. Thus, the k-nearest neighbour method does not have an explicit learning process. k-nearest neighbours actually uses the training dataset to partition the feature vector space and act as a 'model' for its classification.
 
-- k值的选择、距离度量及分类决策规则是k近邻法的三个基本要素。k近邻法1968年由Cover和Hart提出。本章首先叙述k近邻算法，然后讨论k近邻法的模型及三个基本要素，最后讲述k近邻法的一个实现方法——kd树，介绍构造kd树和搜索kd树的算法。
+- The choice of k-value, the distance metric and the classification decision rule are the three basic elements of the k-nearest neighbour method. k-nearest neighbour was proposed by Cover and Hart in 1968. This chapter first describes the k-nearest neighbour algorithm, then discusses the model and the three basic elements of the k-nearest neighbour method, and finally describes one implementation of the k-nearest neighbour method, the kd tree, and introduces the algorithm for constructing the kd tree and searching the kd tree.
 
-- K近邻算法思想：给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的k个实例，这k个实例的多数属于某个类，就把该输入实例分为这个类。
+- K-nearest neighbour algorithm idea: given a training dataset, for a new input instance, find the k instances in the training dataset that are closest to the instance, and the majority of these k instances belong to a certain class, and classify the input instance into that class.
 
-- K近邻模型：k近邻法使用的模型实际上对应于对特征空间的划分。模型由三个基本要素——距离度量、k值的选择和分类决策规则决定。
-- 距离度量：特征空间中两个实例点的距离是两个实例点相似程度的反映。k近邻模型的特征空间一般是n维实数向量空间Rn。使用的距离是欧氏距离，但也可以是其他距离，如更一般的Lp距离（Lp distance）或Minkowski距离（Minkowski distance）。
-- 分类决策规则：k近邻法中的分类决策规则往往是多数表决，即由输入实例的k个邻近的训练实例中的多数类决定输入实例的类。
+- K-nearest neighbour model: The model used in the k-nearest neighbour method actually corresponds to a partitioning of the feature space. The model is determined by three basic elements - the distance metric, the choice of k-value and the classification decision rule.
+- Distance metric: The distance between two instance points in the feature space is a reflection of the degree of similarity between the two instance points. k-nearest neighbour models have a feature space that is typically an n-dimensional real vector space Rn. The distance used is the Euclidean distance, but other distances can be used, such as the more general Lp distance (Lp distance) or the Minkowski distance (Minkowski distance).
+- Classification decision rule: The classification decision rule in the k-nearest neighbour method is often majority voting, i.e. the majority class of the k neighbouring training instances of the input instance determines the class of the input instance.
 
-- K近邻法的实现：算法思想简单，但是计算复杂度很高，所以有人提出一个高效算法KD树
+- Implementation of K-nearest neighbor method: the algorithm idea is simple, but the computational complexity is high, so an efficient algorithm KD tree has been proposed
 
-k近邻法中，当训练集、距离度量（如欧氏距离）、k值及分类决策规则（如多数表决）确定后，对于任何一个新的输入实例，它所属的类唯一地确定。这相当于根据上述要素将特征空间划分为一些子空间，确定子空间里的每个点所属的类。这一事实从最近邻算法中可以看得很清楚。特征空间中，对每个训练实例点ix，距离该点比其他点更近的所有点组成一个区域，叫作单元（cell）。每个训练实例点拥有一个单元，所有训练实例点的单元构成对特征空间的一个划分。最近邻法将实例ix的类iy作为其单元中所有点的类标记（class label）。这样，每个单元的实例点的类别是确定的。
+In the k-nearest neighbour method, once the training set, the distance metric (e.g. Euclidean distance), the k-value and the classification decision rule (e.g. majority voting) have been determined, the class to which it belongs is uniquely determined for any new input instance. This corresponds to dividing the feature space into a number of subspaces based on the above elements and determining the class to which each point in the subspace belongs. This fact can be seen clearly in the nearest neighbour algorithm. In the feature space, for each training instance point ix, all points closer to that point than to other points form a region called a cell. Each training instance point has a cell, and the cells of all training instance points form a partition of the feature space. The nearest neighbour method uses the class iy of an instance ix as the class label for all points in its cell. In this way, the class of instance points is determined for each cell.
